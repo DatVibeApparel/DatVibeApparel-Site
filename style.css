@@ -41,12 +41,24 @@ header nav.visible {
 }
 
 .nav-container {
+    position: fixed;     /* <— REQUIRED */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+
     max-width: 1200px;
     margin: 0 auto;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
+    flex-wrap: nowrap;
+
+    background: rgba(0,0,0,0.6);  /* optional – prevents overlap text from showing through */
+    backdrop-filter: blur(4px);   /* optional aesthetic */
+
 }
 
 .logo img {
@@ -83,36 +95,11 @@ nav ul.nav-links li a:hover {
     transform: scale(1.05);
 }
 
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
 
-.hamburger span {
-    height: 3px;
-    width: 25px;
-    background: #EEE;
-    margin-bottom: 5px;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-.hamburger.toggle span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.toggle span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.toggle span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
 
 /* Responsive Nav */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) { /* smaller than before */
+    /* mobile styles here */
     nav ul.nav-links {
         position: fixed;
         top: 80px;
@@ -139,6 +126,34 @@ nav ul.nav-links li a:hover {
     .hamburger {
         display: flex;
     }
+}
+    /* Hamburger Menu */
+
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+}
+
+    .hamburger span {
+        height: 3px;
+        width: 25px;
+        background: #EEE;
+        margin-bottom: 5px;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+}
+
+    .hamburger.toggle span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+}
+
+    .hamburger.toggle span:nth-child(2) {
+        opacity: 0;
+}
+
+    .hamburger.toggle span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* ================= Buttons ================= */
@@ -383,3 +398,68 @@ footer {
         margin: 30px 0 -90px;      /* spacing above and below */
     }
     
+
+    /* Reset and full page */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #111; /* same dark bg */
+    color: #EEE;           /* text color same as main site */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Logo at the top */
+header {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    background-color: #111;
+}
+
+header .logo img {
+    height: 50px;
+    width: auto;
+}
+
+/* Coming Soon container */
+.coming-soon-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    width: 90%;
+    padding: 20px;
+}
+
+.image-wrapper {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+/* Headings */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #EEE;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #EEE;
+}
